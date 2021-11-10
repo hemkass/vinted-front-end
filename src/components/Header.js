@@ -1,13 +1,20 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Header = () => {
   return (
     <header>
       <div>
         <img
+          className="logo"
           src="https://res.cloudinary.com/dyj84szrx/image/upload/v1636546324/vinted/Vinted-logo_jym1qv.png"
           alt="logo"
         ></img>
       </div>
-      <div></div>
+      <div className="searshButton">
+        <FontAwesomeIcon className="searshButton" icon="search" />
+
+        <input type="search" placeholder="rechercher des articles"></input>
+      </div>
       <div className="subscribe">
         <button>s'inscrire</button>
       </div>
