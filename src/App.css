@@ -1,1 +1,36 @@
 /* Other rules */
+header {
+  height: 100px;
+  margin: 0px auto 0px auto;
+  display: grid;
+  grid-template-columns: 150px 9fr 1fr 2fr 2fr;
+  column-gap: 20px;
+}
+
+.wrapper {
+  padding: 10px;
+}
+
+header img {
+  width: 100px;
+  object-fit: cover;
+}
+header div {
+  justify-content: flex-start;
+}
+header button {
+  padding: 7px;
+  border-radius: 10px;
+
+  justify-content: flex-start;
+}
+
+header .sellButton button {
+  background-color: #09b1ba;
+
+  border: none;
+}
+
+header .subscribe button {
+  border: 1px solid #09b1ba;
+}
