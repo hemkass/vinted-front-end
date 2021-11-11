@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SignUp from "./Signup";
 
 const Header = () => {
+  const handleLogin = () => {};
+
   return (
     <header>
       <div>
@@ -15,7 +18,7 @@ const Header = () => {
 
         <input type="search" placeholder="rechercher des articles"></input>
       </div>
-      <div className="subscribe">
+      <div className="subscribe" onClick={handleLogin}>
         <button>s'inscrire</button>
       </div>
       <div className="subscribe">

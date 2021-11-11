@@ -1,4 +1,3 @@
-import "../App.css";
 import "../css/home.css";
 import "../css/fonts.css";
 
