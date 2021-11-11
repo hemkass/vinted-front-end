@@ -3,10 +3,10 @@
 header {
   font-family: MaisonNeue Med;
   width: 1200px;
-  height: 100px;
+  height: 50px;
   margin: 0px auto 0px auto;
-  display: grid;
-  grid-template-columns: 150px 9fr 1fr 2fr 3fr;
+  display: flex;
+
   column-gap: 20px;
   justify-content: flex-start;
 }
@@ -42,7 +42,7 @@ input::placeholder {
 .logo {
   display: flex;
   padding: 0px;
-  width: 150px;
+  width: 100px;
   height: 35px;
 }
 
@@ -66,7 +66,7 @@ header .sellButton button {
   font-family: MaisonNeue Med;
 }
 
-header .subscribe button {
+header .subscribe {
   border: 1px solid #09b1ba;
   font-family: MaisonNeue Med;
   color: #09b1ba;

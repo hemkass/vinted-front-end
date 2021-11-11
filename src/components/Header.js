@@ -1,13 +1,34 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import SignUp from "./Signup";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import Login from "./login";
 
 const Header = () => {
   const handleLogin = () => {
-    <SignUp />;
+    setLogin(true);
   };
+
+  const handleSignup = () => {
+    setSignUp(true);
+  };
+
+  const [login, setLogin] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   return (
     <header>
+      <SignUp
+        signUp={signUp}
+        setSignUp={setSignUp}
+        className={signUp === false ? "hidden" : "modal"}
+      />
+      <Login
+        login={login}
+        setLogin={setLogin}
+        className={login === false ? "hidden" : "modal"}
+      />
       <div>
         <img
           className="logo"
@@ -20,11 +41,11 @@ const Header = () => {
 
         <input type="search" placeholder="rechercher des articles"></input>
       </div>
-      <div>
-        <button onClick={handleLogin}>s'inscrire</button>
+      <div className="subscribe">
+        <button onClick={handleSignup}>s'inscrire</button>
       </div>
       <div className="login">
-        <button> se connecter </button>
+        <button onClick={handleLogin}> se connecter </button>
       </div>
       <div className="sellButton">
         <button> vends maintenant</button>

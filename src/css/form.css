@@ -26,3 +26,19 @@ form p {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
+
+.closebutton {
+  color: #999999;
+  position: absolute;
+  z-index: 70;
+  right: 20px;
+  top: 10px;
+}
+
+.closebutton:hover {
+  color: black;
+}
+
+.hidden {
+  display: none;
+}

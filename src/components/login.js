@@ -6,12 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const SignUp = ({
+const Login = ({
   className,
-  signUp,
-  setSignUp,
-  username,
-  setUsername,
+  login,
+  setLogin,
+
   email,
   setEmail,
 
@@ -27,12 +26,7 @@ const SignUp = ({
   };
 
   const handleClose = () => {
-    setSignUp(false);
-  };
-
-  const handleUsername = (event) => {
-    const value = event.target.value;
-    setUsername(value);
+    setLogin(false);
   };
 
   const handlePassword = (event) => {
@@ -44,9 +38,8 @@ const SignUp = ({
     event.preventDefault();
     const sendData = async () => {
       await axios
-        .post("https://myvintedapp.herokuapp.com/user/signup", {
+        .post("https://myvintedapp.herokuapp.com/user/login", {
           email: `${email}`,
-          username: `${username}`,
           password: `${password}`,
         })
         .then(function (response) {
@@ -63,19 +56,15 @@ const SignUp = ({
 
   return (
     <div className={className}>
+      {" "}
       <form onSubmit={handleSubmit}>
         <FontAwesomeIcon
           onClick={handleClose}
           className="closebutton"
           icon="times"
         />
-        <h1>S'inscrire</h1>
-        <input
-          onChange={handleUsername}
-          type="text"
-          placeholder="Nom d'utilisateur"
-          value={username}
-        ></input>
+        <h1>Se connecter</h1>
+
         <input
           onChange={handleEmail}
           type="email"
@@ -88,18 +77,9 @@ const SignUp = ({
           placeholder="Mot de passe"
           value={password}
         ></input>
-        <p>
-          <span>
-            <input type="checkbox"></input>
-            S'inscrire à notre Newsletter
-          </span>
-        </p>
-        <p>
-          En m'inscrivant, je confirme que j'ai accepté les Termes et Conditions
-          de Vinted, avoir lu la Politique de Confidentialité, et que j'ai plus
-          de 18 ans.
-        </p>
-        <button type="Submit">Envoyer</button>
+        <div>
+          <button type="Submit">se connecter</button>
+        </div>
       </form>
       {!isLoading && (
         <div>
@@ -110,4 +90,4 @@ const SignUp = ({
   );
 };
 
-export default SignUp;
+export default Login;
