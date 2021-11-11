@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const SignUp = () => {
+const SignUp = ({ className }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,7 +49,7 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="modal">
       <form onSubmit={handleSubmit}>
         <h1>S'inscrire</h1>
         <input

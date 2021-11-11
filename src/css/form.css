@@ -1,8 +1,28 @@
 form {
-  width: 300px;
   margin: 20px auto 20px auto;
+  position: relative;
+  text-align: center;
+  border-radius: 20px;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+
+  background-color: white;
+  height: 600px;
 }
 
 form p {
   display: flex;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 50; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }

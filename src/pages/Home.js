@@ -44,40 +44,38 @@ const Home = () => {
         </div>
       </div>
       <main>
-        <content>
-          <div className="leftside">
-            <div className="homeContent">
-              <div className="picture">
-                {data.offers.map((elem, index) => {
-                  return (
-                    elem.product_pictures[0] && (
-                      <div className="test" key={elem._id}>
-                        <Link to={`/product/${elem._id}`}>
-                          <img
-                            src={elem.product_pictures[0].url}
-                            alt="descriptif du produit"
-                          />
-                          <p className="productPrice">{elem.product_price} €</p>
-                          {elem.product_details.map((item, i) => {
-                            return (
-                              <div key={i}>
-                                <p className="itemDetails">
-                                  {item.TAILLE}
-                                  {item.MARQUE}
-                                </p>
-                              </div>
-                            );
-                          })}
-                        </Link>
-                      </div>
-                    )
-                  );
-                })}
-              </div>
+        <div className="leftside">
+          <div className="homeContent">
+            <div className="picture">
+              {data.offers.map((elem, index) => {
+                return (
+                  elem.product_pictures[0] && (
+                    <div className="test" key={elem._id}>
+                      <Link to={`/product/${elem._id}`}>
+                        <img
+                          src={elem.product_pictures[0].url}
+                          alt="descriptif du produit"
+                        />
+                        <p className="productPrice">{elem.product_price} €</p>
+                        {elem.product_details.map((item, i) => {
+                          return (
+                            <div key={i}>
+                              <p className="itemDetails">
+                                {item.TAILLE}
+                                {item.MARQUE}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </Link>
+                    </div>
+                  )
+                );
+              })}
             </div>
           </div>
-          <div className="rightSide"></div>
-        </content>
+        </div>
+        <div className="rightSide"></div>
       </main>
     </>
   );
