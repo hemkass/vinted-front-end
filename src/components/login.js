@@ -8,30 +8,22 @@ import { useState, useEffect } from "react";
 
 const Login = ({
   className,
+  connected,
+  setConnected,
   login,
   setLogin,
-
   email,
   setEmail,
-
+  handlePassword,
+  handleEmail,
   password,
   setPassword,
 }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleEmail = (event) => {
-    const value = event.target.value;
-    setEmail(value);
-  };
-
   const handleClose = () => {
     setLogin(false);
-  };
-
-  const handlePassword = (event) => {
-    const value = event.target.value;
-    setPassword(value);
   };
 
   const handleSubmit = (event) => {
@@ -52,11 +44,11 @@ const Login = ({
     sendData();
     setIsLoading(false);
     Cookies.set("Login", data.token, { expires: 30 });
+    setConnected(true);
   };
 
   return (
     <div className={className}>
-      {" "}
       <form onSubmit={handleSubmit}>
         <FontAwesomeIcon
           onClick={handleClose}

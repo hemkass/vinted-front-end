@@ -16,8 +16,9 @@ const Product = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers/${id}`
+          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -31,7 +32,8 @@ const Product = () => {
     <p>en cours de chargement</p>
   ) : (
     <div>
-      <div></div>;
+      <h3>{data.product_name}</h3>
+      <div></div>
     </div>
   );
 };

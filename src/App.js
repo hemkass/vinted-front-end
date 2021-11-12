@@ -23,7 +23,21 @@ function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState([]);
+
+  const handleUsername = (event) => {
+    const value = event.target.value;
+    setUsername(value);
+  };
+
+  const handleEmail = (event) => {
+    const value = event.target.value;
+    setEmail(value);
+  };
+
+  const handlePassword = (event) => {
+    const value = event.target.value;
+    setPassword(value);
+  };
 
   return (
     <div className="wrapper">
@@ -33,11 +47,16 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/offer/:id" element={<Product />} />
           <Route
             path="/signup"
             element={
               <SignUp
+                handlePassword={handlePassword}
+                handleEmail={handleEmail}
+                handleUsername={handleUsername}
+                username={username}
+                setUsername={setUsername}
                 email={email}
                 setEmail={setEmail}
                 password={password}
@@ -49,8 +68,7 @@ function App() {
             path="/login"
             element={
               <Login
-                username={username}
-                setUsername={setUsername}
+                handleEmail={handleEmail}
                 email={email}
                 setEmail={setEmail}
                 password={password}

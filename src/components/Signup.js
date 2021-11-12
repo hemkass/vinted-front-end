@@ -7,37 +7,26 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const SignUp = ({
+  handlePassword,
+  handleEmail,
   className,
+  connected,
+  setConnected,
   signUp,
   setSignUp,
   username,
   setUsername,
   email,
   setEmail,
-
+  handleUsername,
   password,
   setPassword,
 }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleEmail = (event) => {
-    const value = event.target.value;
-    setEmail(value);
-  };
-
   const handleClose = () => {
     setSignUp(false);
-  };
-
-  const handleUsername = (event) => {
-    const value = event.target.value;
-    setUsername(value);
-  };
-
-  const handlePassword = (event) => {
-    const value = event.target.value;
-    setPassword(value);
   };
 
   const handleSubmit = (event) => {
@@ -59,6 +48,7 @@ const SignUp = ({
     sendData();
     setIsLoading(false);
     Cookies.set("Login", data.token, { expires: 30 });
+    setConnected(true);
   };
 
   return (

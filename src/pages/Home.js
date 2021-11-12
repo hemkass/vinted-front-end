@@ -13,7 +13,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers?page=1&limit=8"
+          "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
         setData(response.data);
         setIsLoading(false);
@@ -47,17 +47,17 @@ const Home = () => {
         <div className="leftside">
           <div className="homeContent">
             <div className="picture">
-              {data.offers.map((elem, index) => {
+              {data.offers.map((offer, index) => {
                 return (
-                  elem.product_pictures[0] && (
-                    <div className="test" key={elem._id}>
-                      <Link to={`/product/${elem._id}`}>
+                  offer.product_pictures[0] && (
+                    <div className="test" key={offer._id}>
+                      <Link to={`/offer/${offer._id}`}>
                         <img
-                          src={elem.product_pictures[0].url}
+                          src={offer.product_pictures[0].url}
                           alt="descriptif du produit"
                         />
-                        <p className="productPrice">{elem.product_price} €</p>
-                        {elem.product_details.map((item, i) => {
+                        <p className="productPrice">{offer.product_price} €</p>
+                        {offer.product_details.map((item, i) => {
                           return (
                             <div key={i}>
                               <p className="itemDetails">

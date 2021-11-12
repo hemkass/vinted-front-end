@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import Login from "./login";
 
 const Header = () => {
+  const [login, setLogin] = useState(false);
+  const [signUp, setSignUp] = useState(false);
+
+  const [connected, setConnected] = useState(false);
   const handleLogin = () => {
     setLogin(true);
   };
@@ -14,17 +18,23 @@ const Header = () => {
     setSignUp(true);
   };
 
-  const [login, setLogin] = useState(false);
-  const [signUp, setSignUp] = useState(false);
+  const handleDeconnect = () => {
+    setConnected(false);
+    Cookies.remove("Login");
+  };
 
   return (
     <header>
       <SignUp
+        connected={connected}
+        setConnected={setConnected}
         signUp={signUp}
         setSignUp={setSignUp}
         className={signUp === false ? "hidden" : "modal"}
       />
       <Login
+        connected={connected}
+        setConnected={setConnected}
         login={login}
         setLogin={setLogin}
         className={login === false ? "hidden" : "modal"}
@@ -41,12 +51,16 @@ const Header = () => {
 
         <input type="search" placeholder="rechercher des articles"></input>
       </div>
-      <div className="subscribe">
+      <div className={connected === true ? "hidden" : "subscribe "}>
         <button onClick={handleSignup}>s'inscrire</button>
       </div>
-      <div className="login">
+      <div className={connected === true ? "hidden" : "subscribe "}>
         <button onClick={handleLogin}> se connecter </button>
       </div>
+      <div className={connected === true ? "deconnect" : "hidden"}>
+        <button onClick={handleDeconnect}> se déconnecter </button>
+      </div>
+
       <div className="sellButton">
         <button> vends maintenant</button>
       </div>

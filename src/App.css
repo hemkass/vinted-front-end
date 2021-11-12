@@ -66,8 +66,14 @@ header .sellButton button {
   font-family: MaisonNeue Med;
 }
 
-header .subscribe {
+header .subscribe button {
   border: 1px solid #09b1ba;
   font-family: MaisonNeue Med;
   color: #09b1ba;
+}
+
+header .deconnect button {
+  background-color: #c2175b;
+  color: white;
+  font-family: MaisonNeue Med;
 }
