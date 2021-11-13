@@ -16,7 +16,7 @@ const Product = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+          `https://myvintedapp.herokuapp.com/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -34,6 +34,18 @@ const Product = () => {
     <div>
       <h3>{data.product_name}</h3>
       <div></div>
+      <div>
+        {data.product_details.map((elem, id) => {
+          const keys = Object.keys(elem);
+          console.log("hello", keys);
+          return (
+            <li>
+              <span>{keys[0]} :</span>
+              <span> {elem.[keys[0]]}</span>
+            </li>
+          );
+        })}
+      </div>
     </div>
   );
 };

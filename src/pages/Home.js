@@ -13,7 +13,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          "https://myvintedapp.herokuapp.com/offers"
         );
         setData(response.data);
         setIsLoading(false);
@@ -49,11 +49,11 @@ const Home = () => {
             <div className="picture">
               {data.offers.map((offer, index) => {
                 return (
-                  offer.product_pictures[0] && (
+                  offer.product_image[0] && (
                     <div className="test" key={offer._id}>
                       <Link to={`/offer/${offer._id}`}>
                         <img
-                          src={offer.product_pictures[0].url}
+                          src={offer.product_image[0].url}
                           alt="descriptif du produit"
                         />
                         <p className="productPrice">{offer.product_price} €</p>
