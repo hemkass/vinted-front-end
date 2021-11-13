@@ -3,15 +3,24 @@ import "../App.css";
 
 import "../css/fonts.css";
 import "../css/productById.css";
+import "~react-image-gallery/styles/css/image-gallery.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+import ImageGallery from "react-image-gallery";
 
 const Product = () => {
   const { id } = useParams();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const imagesGallery = [];
+  for (let i = 4; i < data.product_image.length; i++) {
+    imagesGallery.push({ original: data.product_image[i].secure_url });
+  }
+  console.log(imagesGallery);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,16 +44,27 @@ const Product = () => {
     <div className="content">
       <div>
         <h3>{data.product_name}</h3>
-        <div className="caroussel">
+        <div
+          className={
+            data.product_image.length <= 3 ? "caroussel" : "grandcaroussel"
+          }
+        >
           {data.product_image[0] &&
-            data.product_image.map((elem) => {
-              return (
+            data.product_image.map((elem, index) => {
+              return index < 4 ? (
                 <div key={elem.asset_id}>
                   <img
+                    onClick=""
                     src={elem.secure_url}
                     alt="différentes vues du produit"
                   />
                 </div>
+              ) : (
+                class MyGallery extends React.Component {
+                  render() {
+                    return <ImageGallery items={imagesGallery} />;
+                  }
+                }
               );
             })}
         </div>
