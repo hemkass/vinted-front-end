@@ -1,14 +1,15 @@
 import { useParams } from "react-router-dom";
+import ImageGallery from "react-image-gallery";
+import React from "react";
+import ReactDOM from "react-dom";
+
 import "../App.css";
 
 import "../css/fonts.css";
 import "../css/productById.css";
-import "~react-image-gallery/styles/css/image-gallery.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-
-import ImageGallery from "react-image-gallery";
 
 const Product = () => {
   const { id } = useParams();
@@ -16,10 +17,20 @@ const Product = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const imagesGallery = [];
-  for (let i = 4; i < data.product_image.length; i++) {
+  const imagesGallery = [
+    {
+      image:
+        "https://res.cloudinary.com/dyj84szrx/image/upload/v1636805527/vinted/offers/618fab9620fbd7e6a6ef2233/0.jpg",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dyj84szrx/image/upload/v1636805527/vinted/offers/618fab9620fbd7e6a6ef2233/0.jpg",
+    },
+  ];
+  /*for (let i = 4; i < data.product_image.length; i++) {
     imagesGallery.push({ original: data.product_image[i].secure_url });
-  }
+  }*/
+
   console.log(imagesGallery);
 
   useEffect(() => {
@@ -60,11 +71,12 @@ const Product = () => {
                   />
                 </div>
               ) : (
-                class MyGallery extends React.Component {
+                "hello"
+                /*   class MyGallery extends React.Component {
                   render() {
                     return <ImageGallery items={imagesGallery} />;
                   }
-                }
+                }*/
               );
             })}
         </div>
