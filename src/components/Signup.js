@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SignUp = ({
   handlePassword,

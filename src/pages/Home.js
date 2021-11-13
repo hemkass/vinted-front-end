@@ -1,5 +1,6 @@
 import "../css/home.css";
 import "../css/fonts.css";
+import "../App.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -27,7 +28,7 @@ const Home = () => {
   return isLoading ? (
     <p>en cours de chargement</p>
   ) : (
-    <>
+    <div>
       <div className="banner">
         <div>
           <img
@@ -46,6 +47,7 @@ const Home = () => {
       <main>
         <div className="leftside">
           <div className="homeContent">
+            <h2>Articles populaires</h2>
             <div className="picture">
               {data.offers.map((offer, index) => {
                 return (
@@ -53,7 +55,7 @@ const Home = () => {
                     <div className="test" key={offer._id}>
                       <Link to={`/offer/${offer._id}`}>
                         <img
-                          src={offer.product_image[0].url}
+                          src={offer.product_image[0].secure_url}
                           alt="descriptif du produit"
                         />
                         <p className="productPrice">{offer.product_price} €</p>
@@ -77,7 +79,7 @@ const Home = () => {
         </div>
         <div className="rightSide"></div>
       </main>
-    </>
+    </div>
   );
 };
 

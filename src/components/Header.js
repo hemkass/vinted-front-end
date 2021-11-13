@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import SignUp from "./Signup";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+
 import Login from "./login";
 
 const Header = () => {
