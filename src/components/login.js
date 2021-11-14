@@ -43,8 +43,10 @@ const Login = ({
     };
     sendData();
     setIsLoading(false);
-    Cookies.set("Login", data.token, { expires: 30 });
-    setConnected(true);
+    if (data.token) {
+      Cookies.set("Login", data.token, { expires: 30 });
+      setConnected(true);
+    }
   };
 
   return (
@@ -56,7 +58,6 @@ const Login = ({
           icon="times"
         />
         <h1>Se connecter</h1>
-
         <input
           onChange={handleEmail}
           type="email"
@@ -69,15 +70,15 @@ const Login = ({
           placeholder="Mot de passe"
           value={password}
         ></input>
-        <div>
+        <div className="submitbutton">
           <button type="Submit">se connecter</button>
-        </div>
+        </div>{" "}
+        {!isLoading && (
+          <div>
+            <span className="error">{data.message}</span>
+          </div>
+        )}
       </form>
-      {!isLoading && (
-        <div>
-          {console.log("mes données :", data)} "hello :" {data.token}
-        </div>
-      )}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const Home = () => {
           "https://myvintedapp.herokuapp.com/offers?page=1&limit=12"
         );
         //lereacteur-vinted-api.herokuapp.com/offers?page=1&limit=8
-        https: setData(response.data);
+        setData(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);

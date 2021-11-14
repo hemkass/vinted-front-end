@@ -8,7 +8,6 @@ form {
   padding: 20px;
 
   background-color: white;
-  height: 600px;
 }
 
 form p {
@@ -41,4 +40,42 @@ form p {
 
 .hidden {
   display: none;
+}
+
+form .submitbutton button:hover {
+  background-color: #09b1ba;
+  color: white;
+  font-family: MaisonNeue Med;
+}
+
+form .submitbutton button {
+  border: 1px solid #09b1ba;
+  font-family: MaisonNeue Med;
+  color: #09b1ba;
+}
+form p {
+  text-align: left;
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+
+label {
+  display: block;
+  padding-top: 50px;
+  text-indent: -170px;
+}
+
+.checkbox input {
+  background-color: chocolate;
+  width: 13px;
+  height: 13px;
+
+  vertical-align: bottom;
+  position: relative;
+}
+
+.error {
+  color: red;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
 }

@@ -47,8 +47,10 @@ const SignUp = ({
     };
     sendData();
     setIsLoading(false);
-    Cookies.set("Login", data.token, { expires: 30 });
-    setConnected(true);
+    if (data.token) {
+      Cookies.set("Login", data.token, { expires: 30 });
+      setConnected(true);
+    }
   };
 
   return (
@@ -78,24 +80,25 @@ const SignUp = ({
           placeholder="Mot de passe"
           value={password}
         ></input>
-        <p>
-          <span>
-            <input type="checkbox"></input>
-            S'inscrire à notre Newsletter
-          </span>
-        </p>
+        {!isLoading && (
+          <div>
+            <span className="error">{data.message}</span>
+          </div>
+        )}
+        <span className="checkbox">
+          <label>
+            <input type="checkbox"></input> S'inscrire à notre Newsletter
+          </label>
+        </span>
         <p>
           En m'inscrivant, je confirme que j'ai accepté les Termes et Conditions
           de Vinted, avoir lu la Politique de Confidentialité, et que j'ai plus
           de 18 ans.
         </p>
-        <button type="Submit">Envoyer</button>
-      </form>
-      {!isLoading && (
-        <div>
-          {console.log("mes données :", data)} "hello :" {data.token}
+        <div className="submitbutton">
+          <button type="Submit">Envoyer</button>
         </div>
-      )}
+      </form>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import ImageGallery from "react-image-gallery";
-import React from "react";
-import ReactDOM from "react-dom";
+//import ImageGallery from "react-image-gallery";
+//import React from "react";
+//import ReactDOM from "react-dom";
 
 import "../App.css";
 
@@ -17,7 +17,7 @@ const Product = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const imagesGallery = [
+  /*const imagesGallery = [
     {
       image:
         "https://res.cloudinary.com/dyj84szrx/image/upload/v1636805527/vinted/offers/618fab9620fbd7e6a6ef2233/0.jpg",
@@ -26,12 +26,10 @@ const Product = () => {
       image:
         "https://res.cloudinary.com/dyj84szrx/image/upload/v1636805527/vinted/offers/618fab9620fbd7e6a6ef2233/0.jpg",
     },
-  ];
+  ];*/
   /*for (let i = 4; i < data.product_image.length; i++) {
     imagesGallery.push({ original: data.product_image[i].secure_url });
-  }*/
-
-  console.log(imagesGallery);
+  }console.log(imagesGallery);*/
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +60,7 @@ const Product = () => {
         >
           {data.product_image[0] &&
             data.product_image.map((elem, index) => {
-              return index < 4 ? (
+              return index < 5 ? (
                 <div key={elem.asset_id}>
                   <img
                     onClick=""
@@ -106,7 +104,10 @@ const Product = () => {
             {" "}
             <span>
               <span>
-                <img src={data.owner.account.avatar} />
+                <img
+                  src={data.owner.account.avatar}
+                  alt="avatar de l'utilisateur"
+                />
               </span>
               <span>{data.owner.account.username}</span>
             </span>
