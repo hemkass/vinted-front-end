@@ -80,8 +80,11 @@ const Header = ({
           <Range
             min={0}
             max={1000}
+            draggableTrack={true}
             step={10}
             defaultValue={[10, 100]}
+            allowCross={false}
+            pushable={5}
             onChange={(value) => {
               setPriceMin(Number(value[0]));
               console.log(priceMin);

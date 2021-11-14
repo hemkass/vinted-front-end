@@ -50,14 +50,14 @@ img {
 .picture {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 10px;
   row-gap: 30px;
 }
 content {
   display: grid;
   grid-template-columns: 5fr 250px;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 10px;
 }
 .rightSide {

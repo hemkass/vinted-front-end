@@ -16,7 +16,7 @@ const Home = ({ title, priceMin, priceMax, sort }) => {
         console.log({ priceMax });
         console.log({ priceMin });
         const response = await axios.get(
-          `https://myvintedapp.herokuapp.com/offers?title=${title}&sort=${sort}&priceMin=${priceMin}&priceMax=&${priceMax}`
+          `https://myvintedapp.herokuapp.com/offers?title=${title}&sort=${sort}&priceMin=${priceMin}&priceMax=&${priceMax}&limit=${20}`
         );
         //lereacteur-vinted-api.herokuapp.com/offers?page=1&limit=8
         setData(response.data);
