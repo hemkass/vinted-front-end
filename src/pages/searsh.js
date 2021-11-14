@@ -6,18 +6,17 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Home = ({ title, priceMin, priceMax, sort }) => {
+const Home2 = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  let filter = {};
+  const src = "https://myvintedapp.herokuapp.com/offers?page=1&limit=12";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log({ priceMax });
-        console.log({ priceMin });
-        const response = await axios.get(
-          `https://myvintedapp.herokuapp.com/offers?title=${title}&sort=${sort}&priceMin=${priceMin}&priceMax=&${priceMax}`
-        );
+        const response = await axios.get(src);
         //lereacteur-vinted-api.herokuapp.com/offers?page=1&limit=8
         setData(response.data);
         setIsLoading(false);
@@ -26,7 +25,7 @@ const Home = ({ title, priceMin, priceMax, sort }) => {
       }
     };
     fetchData();
-  }, [title, sort, priceMax, priceMin]);
+  }, []);
 
   return isLoading ? (
     <p>en cours de chargement</p>
@@ -86,4 +85,4 @@ const Home = ({ title, priceMin, priceMax, sort }) => {
   );
 };
 
-export default Home;
+export default Home2;

@@ -10,17 +10,16 @@ const SignUp = ({
   handlePassword,
   handleEmail,
   className,
-  connected,
+
   setConnected,
-  signUp,
+
   setSignUp,
   username,
-  setUsername,
+
   email,
-  setEmail,
+
   handleUsername,
   password,
-  setPassword,
 }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

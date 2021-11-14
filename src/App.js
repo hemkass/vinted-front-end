@@ -23,6 +23,10 @@ function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [priceMax, setPriceMax] = useState(500);
+  const [priceMin, setPriceMin] = useState(0);
+  const [sort, setSort] = useState("price-asc");
 
   const handleUsername = (event) => {
     const value = event.target.value;
@@ -42,11 +46,30 @@ function App() {
   return (
     <div className="wrapper">
       <Router>
-        <Header />
+        <Header
+          title={title}
+          setTitle={setTitle}
+          setPriceMax={setPriceMax}
+          priceMax={priceMax}
+          setPriceMin={setPriceMin}
+          priceMin={priceMin}
+          setSort={setSort}
+          sort={sort}
+        />
         <nav></nav>
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                title={title}
+                priceMax={priceMax}
+                priceMin={priceMin}
+                sort={sort}
+              />
+            }
+          />
           <Route path="/offer/:id" element={<Product />} />
           <Route
             path="/signup"

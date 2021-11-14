@@ -3,12 +3,18 @@
 header {
   font-family: MaisonNeue Med;
   width: 1200px;
-  height: 50px;
+  height: 100px;
   margin: 0px auto 0px auto;
   display: flex;
 
   column-gap: 20px;
   justify-content: flex-start;
+}
+
+.textRange {
+  height: "6px";
+  width: "100%";
+  background-color: white;
 }
 
 h2 {

@@ -3,9 +3,20 @@ import { useState } from "react";
 import SignUp from "./Signup";
 import Cookies from "js-cookie";
 
+import { Range } from "rc-slider";
+import "rc-slider/assets/index.css";
+
 import Login from "./login";
 
-const Header = () => {
+const Header = ({
+  setTitle,
+  setPriceMax,
+  priceMax,
+  setPriceMin,
+  priceMin,
+  setSort,
+  sort,
+}) => {
   const [login, setLogin] = useState(false);
   const [signUp, setSignUp] = useState(false);
 
@@ -46,10 +57,39 @@ const Header = () => {
           alt="logo"
         ></img>
       </div>
-      <div className="searshButton">
+      <div
+        className="searshButton"
+        onChange={(event) => {
+          setTitle(event.target.value);
+        }}
+      >
         <FontAwesomeIcon className="searshButton" icon="search" />
-
         <input type="search" placeholder="rechercher des articles"></input>
+        <span>
+          <input
+            type="checkbox"
+            name="price"
+            onChange={(event) => {
+              sort === "price-desc"
+                ? setSort("price-asc")
+                : setSort("price-desc");
+            }}
+          ></input>
+        </span>
+        <span>
+          <Range
+            min={0}
+            max={1000}
+            step={10}
+            defaultValue={[10, 100]}
+            onChange={(value) => {
+              setPriceMin(Number(value[0]));
+              console.log(priceMin);
+              setPriceMax(value[1]);
+            }}
+          />
+        </span>
+        <span></span>
       </div>
       <div className={connected === true ? "hidden" : "subscribe "}>
         <button onClick={handleSignup}>s'inscrire</button>
