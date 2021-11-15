@@ -16,9 +16,9 @@ const Home = ({ title, priceMin, priceMax, sort }) => {
         console.log({ priceMax });
         console.log({ priceMin });
         const response = await axios.get(
-          `https://myvintedapp.herokuapp.com/offers?title=${title}&sort=${sort}&priceMin=${priceMin}&priceMax=&${priceMax}&limit=${20}`
+          `https://myvintedapp.herokuapp.com/offers?title=${title}&sort=${sort}&priceMin=${priceMin}&priceMax=&${priceMax}&limit=20`
         );
-        //lereacteur-vinted-api.herokuapp.com/offers?page=1&limit=8
+
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -48,13 +48,13 @@ const Home = ({ title, priceMin, priceMax, sort }) => {
         </div>
       </div>
       <main>
-        <div className="leftside">
-          <div className="homeContent">
+        <div>
+          <div>
             <h2>Articles populaires</h2>
             <div className="picture">
               {data.offers.map((offer, index) => {
                 return (
-                  offer.product_image[0] && (
+                  offer.product_image && (
                     <div className="test" key={offer._id}>
                       <Link to={`/offer/${offer._id}`}>
                         <img

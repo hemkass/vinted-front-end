@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Product from "./pages/Product";
 import SignUp from "./components/Signup";
 import Login from "./components/login";
+import Publish from "./pages/publish";
 
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -26,7 +27,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [priceMax, setPriceMax] = useState(500);
   const [priceMin, setPriceMin] = useState(0);
-  const [sort, setSort] = useState("price-asc");
+  const [sort, setSort] = useState("price-desc");
 
   const handleUsername = (event) => {
     const value = event.target.value;
@@ -99,6 +100,7 @@ function App() {
               />
             }
           />
+          <Route path="/publish" element={<Publish />}></Route>
         </Routes>
       </Router>
     </div>

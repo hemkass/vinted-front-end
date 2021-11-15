@@ -5,8 +5,8 @@ header {
   width: 1200px;
   height: 100px;
   margin: 0px auto 0px auto;
-  display: flex;
-
+  display: grid;
+  grid-template-columns: 100px 5fr 80px 100px 150px;
   column-gap: 20px;
   justify-content: flex-start;
 }
@@ -52,6 +52,7 @@ main {
 
 header .searshButton {
   align-items: baseline;
+  flex-grow: 3;
 }
 header .searshButton:first-child {
   color: #999999;
@@ -74,6 +75,7 @@ input::placeholder {
   padding: 0px;
   width: 100px;
   height: 35px;
+  flex-grow: 1;
 }
 
 header img {
@@ -88,12 +90,14 @@ header button {
   border-radius: 10px;
 
   justify-content: flex-start;
+  flex-grow: 1;
 }
 
 header .sellButton button {
   background-color: #09b1ba;
   color: white;
   font-family: MaisonNeue Med;
+  flex-grow: 2;
 }
 
 header .subscribe button {
