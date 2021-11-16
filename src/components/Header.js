@@ -45,6 +45,7 @@ const Header = ({
   const handleDeconnect = () => {
     setConnected(false);
     Cookies.remove("Login");
+    window.location.reload(false);
   };
 
   return (
@@ -107,6 +108,7 @@ const Header = ({
         </span>
         <span></span>
       </div>
+      {console.log(token)}
       <div className={token ? "hidden" : "subscribe "}>
         <button onClick={handleSignup}>s'inscrire</button>
       </div>
@@ -116,7 +118,6 @@ const Header = ({
       <div className={token ? "deconnect" : "hidden"}>
         <button onClick={handleDeconnect}> se déconnecter </button>
       </div>
-
       <div className="sellButton">
         <button onClick={handleSale}> vends maintenant</button>
       </div>

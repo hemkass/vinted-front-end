@@ -6,50 +6,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useState } from "react";
 
-const SignUp = ({
-  handlePassword,
-  handleEmail,
-  className,
-
-  setConnected,
-
-  setSignUp,
-  username,
-
-  email,
-
-  handleUsername,
-  password,
-}) => {
+const SignUp = ({ className, setConnected, setSignUp }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClose = () => {
     setSignUp(false);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const sendData = async () => {
-      await axios
-        .post("https://myvintedapp.herokuapp.com/user/signup", {
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await axios.post(
+        "https://myvintedapp.herokuapp.com/user/signup",
+        {
           email: `${email}`,
           username: `${username}`,
           password: `${password}`,
-        })
-        .then(function (response) {
-          setData(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-    sendData();
-    setIsLoading(false);
-    if (data.token) {
-      Cookies.set("Login", data.token, { expires: 30 });
-      setConnected(true);
-      setSignUp(false);
+        }
+      );
+      console.log(response);
+      if (response.data.token) {
+        setIsLoading(false);
+        console.log(response.data);
+
+        setSignUp(false);
+      }
+    } catch (error) {
+      setError("Not authorized");
     }
   };
 
@@ -63,19 +51,19 @@ const SignUp = ({
         />
         <h1>S'inscrire</h1>
         <input
-          onChange={handleUsername}
+          onChange={(event) => setUsername(event.target.value)}
           type="text"
           placeholder="Nom d'utilisateur"
           value={username}
         ></input>
         <input
-          onChange={handleEmail}
+          onChange={(event) => setEmail(event.target.value)}
           type="email"
           placeholder="Email"
           value={email}
         ></input>
         <input
-          onChange={handlePassword}
+          onChange={(event) => setPassword(event.target.value)}
           type="password"
           placeholder="Mot de passe"
           value={password}
@@ -99,6 +87,9 @@ const SignUp = ({
           <button type="Submit">Envoyer</button>
         </div>
       </form>
+      <div>
+        <span className="error">{error}</span>
+      </div>
     </div>
   );
 };

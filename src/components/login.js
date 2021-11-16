@@ -6,47 +6,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useState } from "react";
 
-const Login = ({
-  className,
-  connected,
-  setConnected,
-  login,
-  setLogin,
-  email,
-  setEmail,
-  handlePassword,
-  handleEmail,
-  password,
-  setPassword,
-}) => {
+const Login = ({ className, connected, setConnected, login, setLogin }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClose = () => {
     setLogin(false);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const sendData = async () => {
-      await axios
-        .post("https://myvintedapp.herokuapp.com/user/login", {
+    try {
+      const response = await axios.post(
+        "https://myvintedapp.herokuapp.com/user/login",
+        {
           email: `${email}`,
           password: `${password}`,
-        })
-        .then(function (response) {
-          setData(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-    sendData();
-    setIsLoading(false);
-    if (data.token) {
-      Cookies.set("Login", data.token, { expires: 30 });
-      setConnected(true);
-      setLogin(false);
+        }
+      );
+
+      setIsLoading(false);
+      if (response.data.token) {
+        Cookies.set("Login", data.token, { expires: 30 });
+        setConnected(true);
+        setLogin(false);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 428) {
+        setErrorMessage("Mauvais email et/ou mot de passe");
+      }
     }
   };
 
@@ -59,24 +50,30 @@ const Login = ({
           icon="times"
         />
         <h1>Se connecter</h1>
-        <input
-          onChange={handleEmail}
-          type="email"
-          placeholder="Email"
-          value={email}
-        ></input>
-        <input
-          onChange={handlePassword}
-          type="password"
-          placeholder="Mot de passe"
-          value={password}
-        ></input>
-        <div className="submitbutton">
-          <button type="Submit">se connecter</button>
+        <div>
+          <input
+            onChange={(event) => setEmail(event.target.value)}
+            type="email"
+            placeholder="Email"
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <input
+            onChange={(event) => setPassword(event.target.value)}
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <div className="submitbutton">
+            <button type="Submit">se connecter</button>
+          </div>
         </div>{" "}
         {!isLoading && (
           <div>
-            <span className="error">{data.message}</span>
+            <span className="error">{errorMessage}</span>
           </div>
         )}
       </form>

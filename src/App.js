@@ -32,22 +32,6 @@ function App() {
   const [priceMin, setPriceMin] = useState(0);
   const [sort, setSort] = useState("price-desc");
 
-  // Pour gérer Login et Signin
-  const handleUsername = (event) => {
-    const value = event.target.value;
-    setUsername(value);
-  };
-
-  const handleEmail = (event) => {
-    const value = event.target.value;
-    setEmail(value);
-  };
-
-  const handlePassword = (event) => {
-    const value = event.target.value;
-    setPassword(value);
-  };
-
   return (
     <div className="wrapper">
       <Router>
@@ -84,34 +68,8 @@ function App() {
             }
           />
           <Route path="/offer/:id" element={<Product setLogin={setLogin} />} />
-          <Route
-            path="/signup"
-            element={
-              <SignUp
-                handlePassword={handlePassword}
-                handleEmail={handleEmail}
-                handleUsername={handleUsername}
-                username={username}
-                setUsername={setUsername}
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Login
-                handleEmail={handleEmail}
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-              />
-            }
-          />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/publish" element={<Publish />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
         </Routes>
