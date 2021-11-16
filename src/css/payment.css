@@ -1,0 +1,58 @@
+.paymentWrapper {
+  display: flex;
+  padding: 20px;
+  width: 500px;
+  box-shadow: 1px 1px 10px 1px grey;
+  margin: 20px auto 100px auto;
+}
+
+.paymentWrapper div p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Paymentfees {
+  padding-bottom: 30px;
+}
+
+.PaymentTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.PaymentTotal {
+  padding-bottom: 30px;
+}
+.PaymentBlabla {
+  font-size: 16px;
+  font-family: MaisonNeue Med;
+  font-weight: 500;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+
+.cardElement {
+  padding: 20px;
+  margin-bottom: 40px;
+
+  width: 90%;
+}
+
+.form {
+  width: 95%;
+}
+
+.PaymentButton button {
+  background-color: #09b1ba;
+  color: white;
+  font-size: 18px;
+  font-family: MaisonNeue Med;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+}
+.PaymentButton button:hover {
+  border: 1px solid #09b1ba;
+  background-color: white;
+  font-family: MaisonNeue Med;
+  color: #09b1ba;
+}

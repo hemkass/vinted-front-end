@@ -7,15 +7,31 @@ import "../App.css";
 
 import "../css/fonts.css";
 import "../css/productById.css";
+import "../components/login";
+
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const Product = () => {
+const Product = ({ setLogin }) => {
+  const token = Cookies.get("Login");
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleBuy = () => {
+    if (token) {
+      //cookie de 10 min me permettant de transmettre l'id du produit vers le paiement
+      Cookies.set("offer", data._id, { expires: 30 });
+      navigate("/payment");
+    } else {
+      setLogin(true);
+    }
+  };
 
   /*const imagesGallery = [
     {
@@ -63,7 +79,6 @@ const Product = () => {
               return index < 5 ? (
                 <div key={elem.asset_id}>
                   <img
-                    onClick=""
                     src={elem.secure_url}
                     alt="différentes vues du produit"
                   />
@@ -84,6 +99,7 @@ const Product = () => {
           <h3>{Number(data.product_price).toFixed(2)} €</h3>
           {data.product_details.map((elem, index) => {
             const keys = Object.keys(elem);
+            console.log("mon cookie", data);
 
             return (
               <p key={index}>
@@ -112,6 +128,9 @@ const Product = () => {
               <span>{data.owner.account.username}</span>
             </span>
           </p>
+        </div>
+        <div className="buy">
+          <button onClick={handleBuy}>achetez</button>
         </div>
       </div>
     </div>

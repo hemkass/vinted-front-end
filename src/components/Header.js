@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import SignUp from "./Signup";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 import { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -9,6 +10,10 @@ import "rc-slider/assets/index.css";
 import Login from "./login";
 
 const Header = ({
+  setLogin,
+  login,
+  signUp,
+  setSignUp,
   setTitle,
   setPriceMax,
   priceMax,
@@ -17,12 +22,20 @@ const Header = ({
   setSort,
   sort,
 }) => {
-  const [login, setLogin] = useState(false);
-  const [signUp, setSignUp] = useState(false);
+  const navigate = useNavigate();
+  const token = Cookies.get("Login");
 
   const [connected, setConnected] = useState(false);
   const handleLogin = () => {
     setLogin(true);
+  };
+
+  const handleSale = () => {
+    if (token) {
+      navigate("/publish");
+    } else {
+      setLogin(true);
+    }
   };
 
   const handleSignup = () => {
@@ -94,18 +107,18 @@ const Header = ({
         </span>
         <span></span>
       </div>
-      <div className={connected === true ? "hidden" : "subscribe "}>
+      <div className={token ? "hidden" : "subscribe "}>
         <button onClick={handleSignup}>s'inscrire</button>
       </div>
-      <div className={connected === true ? "hidden" : "subscribe "}>
+      <div className={token ? "hidden" : "subscribe "}>
         <button onClick={handleLogin}> se connecter </button>
       </div>
-      <div className={connected === true ? "deconnect" : "hidden"}>
+      <div className={token ? "deconnect" : "hidden"}>
         <button onClick={handleDeconnect}> se déconnecter </button>
       </div>
 
       <div className="sellButton">
-        <button> vends maintenant</button>
+        <button onClick={handleSale}> vends maintenant</button>
       </div>
     </header>
   );

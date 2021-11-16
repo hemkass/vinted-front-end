@@ -8,6 +8,7 @@ import Product from "./pages/Product";
 import SignUp from "./components/Signup";
 import Login from "./components/login";
 import Publish from "./pages/publish";
+import Payment from "./pages/payment";
 
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -21,6 +22,8 @@ import {
 library.add(faSearch, faEnvelope, faTimes);
 
 function App() {
+  const [login, setLogin] = useState(false);
+  const [signUp, setSignUp] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,6 +32,7 @@ function App() {
   const [priceMin, setPriceMin] = useState(0);
   const [sort, setSort] = useState("price-desc");
 
+  // Pour gérer Login et Signin
   const handleUsername = (event) => {
     const value = event.target.value;
     setUsername(value);
@@ -48,6 +52,10 @@ function App() {
     <div className="wrapper">
       <Router>
         <Header
+          login={login}
+          setLogin={setLogin}
+          signUp={signUp}
+          setSignUp={setSignUp}
           title={title}
           setTitle={setTitle}
           setPriceMax={setPriceMax}
@@ -64,6 +72,10 @@ function App() {
             path="/"
             element={
               <Home
+                login={login}
+                setLogin={setLogin}
+                signUp={signUp}
+                setSignUp={setSignUp}
                 title={title}
                 priceMax={priceMax}
                 priceMin={priceMin}
@@ -71,7 +83,7 @@ function App() {
               />
             }
           />
-          <Route path="/offer/:id" element={<Product />} />
+          <Route path="/offer/:id" element={<Product setLogin={setLogin} />} />
           <Route
             path="/signup"
             element={
@@ -101,6 +113,7 @@ function App() {
             }
           />
           <Route path="/publish" element={<Publish />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
         </Routes>
       </Router>
     </div>

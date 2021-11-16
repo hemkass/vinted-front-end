@@ -6,7 +6,7 @@ header {
   height: 100px;
   margin: 0px auto 0px auto;
   display: grid;
-  grid-template-columns: 100px 5fr 80px 100px 150px;
+  grid-template-columns: 100px 5fr 150px 150px 150px;
   column-gap: 20px;
   justify-content: flex-start;
 }
@@ -100,6 +100,12 @@ header .sellButton button {
   flex-grow: 2;
 }
 
+header .sellButton button:hover {
+  background-color: white;
+  color: #09b1ba;
+  border: 1px solid #09b1ba;
+}
+
 header .subscribe button {
   border: 1px solid #09b1ba;
   font-family: MaisonNeue Med;
@@ -109,5 +115,12 @@ header .subscribe button {
 header .deconnect button {
   background-color: #c2175b;
   color: white;
+  font-family: MaisonNeue Med;
+}
+
+header .deconnect button:hover {
+  background-color: white;
+  color: #c2175b;
+  border: 1px solid #c2175b;
   font-family: MaisonNeue Med;
 }

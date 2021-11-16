@@ -1,10 +1,16 @@
 import "../App.css";
-import { useState } from "react";
+import "../css/publish.css";
+
+//import Preview from "./test";
 import axios from "axios";
 import Cookies from "js-cookie";
+import React, { useState } from "react";
+
+import { Navigate } from "react-router-dom";
 
 const Publish = () => {
   const token = Cookies.get("Login");
+
   const [data, setData] = useState();
   const [title, setTitle] = useState("");
   const [file, setFile] = useState();
@@ -39,7 +45,7 @@ const Publish = () => {
       formData.append("city", ville);
 
       const response = await axios.post(
-        /*"https://myvintedapp.herokuapp.com/offer/publish"  */ "http://localhost:4000/offer/publish",
+        "https://myvintedapp.herokuapp.com/offer/publish" /*"http://localhost:4000/offer/publish"*/,
         formData,
         {
           headers: {
@@ -54,10 +60,20 @@ const Publish = () => {
     }
   };
 
-  return (
+  // test pour l'histoire de la préview
+
+  return token ? (
     <div>
       <form onSubmit={handleSubmit}>
         <h1>Vends ton article </h1>
+        <div>
+          {/* <Preview
+            file={file}
+            setFile={setFile}
+            files={files}
+            setFiles={setFiles}
+          />*/}
+        </div>
         <div>
           <input
             multiple={true}
@@ -91,6 +107,21 @@ const Publish = () => {
                 value={description}
                 onChange={(event) => {
                   setDescription(event.target.value);
+                }}
+              ></input>
+            </label>
+          </p>
+        </div>{" "}
+        <div>
+          <p>
+            <label>
+              Prix :
+              <input
+                type="number"
+                value={price}
+                placeholder="ex 22, merci de ne pas le signe €"
+                onChange={(event) => {
+                  setPrice(event.target.value);
                 }}
               ></input>
             </label>
@@ -172,23 +203,12 @@ const Publish = () => {
             <input type="text" name="Ville"></input>
           </p>
         </div>
-        <div>
-          <label>
-            Prix :
-            <input
-              type="number"
-              value={price}
-              placeholder="ex 22, merci de ne pas le signe €"
-              onChange={(event) => {
-                setPrice(event.target.value);
-              }}
-            ></input>
-          </label>
-        </div>
         <button type="submit"> ajouter</button>
       </form>
-      {isLoading === false && <div> </div>}
+      {isLoading === false && <Navigate to={`/offer/${data.id}`} />}
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 };
 

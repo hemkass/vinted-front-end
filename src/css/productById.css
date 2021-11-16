@@ -99,7 +99,8 @@
 
   padding: 50px 3px 0px 7px;
   display: grid;
-  grid-template-rows: 1fr 50px 1fr 1fr;
+  grid-template-rows: 200px 50px 150px 70px;
+
   row-gap: 20px;
   justify-content: flex-start;
 }
@@ -139,4 +140,17 @@
 
   align-items: center;
   padding-left: 20px;
+}
+
+.buy {
+  display: flex;
+  justify-content: center;
+}
+.buy button {
+  background-color: #09b1ba;
+  color: white;
+  font-size: 18px;
+  font-family: MaisonNeue Med;
+  padding: 5px;
+  border-radius: 10px;
 }

@@ -49,6 +49,7 @@ const SignUp = ({
     if (data.token) {
       Cookies.set("Login", data.token, { expires: 30 });
       setConnected(true);
+      setSignUp(false);
     }
   };
 
