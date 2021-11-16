@@ -27,12 +27,16 @@ const CheckoutForm = ({ price, description, userId, Offer_id }) => {
       });
       // Etape 3 : je vérifie de bien recevoir le token : console.log(stripeResponse.token.id);
       // Etape 4 : J'envoie le strikeToken à mon serveur:
-      const response = await axios.post("http://localhost:4000/payment", {
-        stripeToken: stripeResponse.token.id,
-        product_Price: Number(price),
-        product_Description: description,
-        Offer_id: Offer_id,
-      });
+      const response = await axios.post(
+        /*  "http://localhost:4000/payment"*/
+        `https://myvintedapp.herokuapp.com/payment`,
+        {
+          stripeToken: stripeResponse.token.id,
+          product_Price: Number(price),
+          product_Description: description,
+          Offer_id: Offer_id,
+        }
+      );
       if (response.status === 200) {
         setValid("Paiement validé !");
       }
@@ -86,8 +90,8 @@ const CheckoutForm = ({ price, description, userId, Offer_id }) => {
         <div className="PaymentButton">
           <button type="submit">Payer</button>
         </div>
-        <span>{valid}</span>
       </form>
+      {valid && <div>{valid}</div>}
     </div>
   );
 };
