@@ -44,7 +44,7 @@ const Header = ({
 
   const handleDeconnect = () => {
     setConnected(false);
-    Cookies.remove("Login");
+    Cookies.remove("login");
   };
 
   return (

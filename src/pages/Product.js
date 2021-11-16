@@ -25,27 +25,13 @@ const Product = ({ setLogin }) => {
 
   const handleBuy = () => {
     if (token) {
-      //cookie de 10 min me permettant de transmettre l'id du produit vers le paiement
+      //cookie  me permettant de transmettre l'id du produit vers le paiement
       Cookies.set("offer", data._id, { expires: 30 });
       navigate("/payment");
     } else {
       setLogin(true);
     }
   };
-
-  /*const imagesGallery = [
-    {
-      image:
-        "https://res.cloudinary.com/dyj84szrx/image/upload/v1636805527/vinted/offers/618fab9620fbd7e6a6ef2233/0.jpg",
-    },
-    {
-      image:
-        "https://res.cloudinary.com/dyj84szrx/image/upload/v1636805527/vinted/offers/618fab9620fbd7e6a6ef2233/0.jpg",
-    },
-  ];*/
-  /*for (let i = 4; i < data.product_image.length; i++) {
-    imagesGallery.push({ original: data.product_image[i].secure_url });
-  }console.log(imagesGallery);*/
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,20 +62,15 @@ const Product = ({ setLogin }) => {
         >
           {data.product_image[0] &&
             data.product_image.map((elem, index) => {
-              return index < 5 ? (
-                <div key={elem.asset_id}>
-                  <img
-                    src={elem.secure_url}
-                    alt="différentes vues du produit"
-                  />
-                </div>
-              ) : (
-                "hello"
-                /*   class MyGallery extends React.Component {
-                  render() {
-                    return <ImageGallery items={imagesGallery} />;
-                  }
-                }*/
+              return (
+                index < 5 && (
+                  <div key={elem.asset_id}>
+                    <img
+                      src={elem.secure_url}
+                      alt="différentes vues du produit"
+                    />
+                  </div>
+                )
               );
             })}
         </div>
