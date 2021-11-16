@@ -24,9 +24,7 @@ library.add(faSearch, faEnvelope, faTimes);
 function App() {
   const [login, setLogin] = useState(false);
   const [signUp, setSignUp] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const [title, setTitle] = useState("");
   const [priceMax, setPriceMax] = useState(500);
   const [priceMin, setPriceMin] = useState(0);

@@ -34,8 +34,8 @@ const Home = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log({ priceMax });
-        console.log({ priceMin });
+        // console.log({ priceMax });
+        //console.log({ priceMin });
         const response = await axios.get(
           `https://myvintedapp.herokuapp.com/offers?title=${title}&sort=${sort}&priceMin=${priceMin}&priceMax=&${priceMax}&limit=20`
         );
@@ -80,6 +80,7 @@ const Home = ({
             <h2>Articles populaires</h2>
             <div className="picture">
               {data.offers.map((offer, index) => {
+                /* Cas où il y a plusieurs image et donc data.product_image est un tableau */
                 return offer.product_image[0] ? (
                   <div className="test" key={offer._id}>
                     <Link to={`/offer/${offer._id}`}>
@@ -101,6 +102,7 @@ const Home = ({
                     </Link>
                   </div>
                 ) : (
+                  /* Cas où il y a qu'une image et donc data.product_image n'est pas un tableau */
                   offer.product_image && (
                     <div key={offer._id}>
                       <div className="test">

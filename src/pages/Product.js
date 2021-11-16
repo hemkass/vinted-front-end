@@ -60,19 +60,29 @@ const Product = ({ setLogin }) => {
             data.product_image.length <= 3 ? "caroussel" : "grandcaroussel"
           }
         >
-          {data.product_image[0] &&
-            data.product_image.map((elem, index) => {
-              return (
-                index < 5 && (
-                  <div key={elem.asset_id}>
-                    <img
-                      src={elem.secure_url}
-                      alt="différentes vues du produit"
-                    />
-                  </div>
-                )
-              );
-            })}
+          {" "}
+          {/* Cas où il y a plusieurs image et donc data.product_image est un tableau */}
+          {data.product_image[0]
+            ? data.product_image.map((elem, index) => {
+                return (
+                  index < 5 && (
+                    <div key={elem.asset_id}>
+                      <img
+                        src={elem.secure_url}
+                        alt="différentes vues du produit"
+                      />
+                    </div>
+                  )
+                );
+              }) /* Cas où il y a qu'une image et donc data.product_image n'est pas un tableau */
+            : data.product_image && (
+                <div>
+                  <img
+                    src={data.product_image.secure_url}
+                    alt="différentes vues du produit"
+                  />
+                </div>
+              )}
         </div>
       </div>
       <div className="productDetails">
