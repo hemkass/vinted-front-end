@@ -1,0 +1,42 @@
+@media (min-width: 720px) and (max-width: 960px) {
+  .hiddenTab {
+    display: flex;
+  }
+
+  .MenuButton {
+    display: none;
+  }
+
+  .Menu .button {
+    font-size: 30px;
+    color: grey;
+  }
+  .picture {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 30px;
+  }
+
+  .picture img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  header {
+    font-family: MaisonNeue Med;
+    width: 90vw;
+    height: max-content;
+    margin: 0px auto 0px auto;
+    display: grid;
+    grid-template-columns: 100px 10fr 20px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner {
+    display: none;
+  }
+}

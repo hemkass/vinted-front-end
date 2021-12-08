@@ -42,6 +42,10 @@ form p {
   display: none;
 }
 
+.hiddenMenu {
+  display: none;
+}
+
 form .submitbutton button:hover {
   background-color: #09b1ba;
   color: white;

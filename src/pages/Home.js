@@ -76,7 +76,7 @@ const Home = ({
       </div>
       <main>
         <div>
-          <div>
+          <div className="homeContent">
             <h2>Articles populaires</h2>
             <div className="picture">
               {data.offers.map((offer, index) => {

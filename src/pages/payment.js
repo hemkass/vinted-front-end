@@ -48,9 +48,9 @@ const Payment = () => {
         );
         // console.log(response.data);
         setUser(response.data);
-        console.log("user", user);
+        //console.log("user", user);
       } catch (error) {
-        console.log(error.message);
+        //console.log(error.message);
       }
     };
     fetchOwnerId();
